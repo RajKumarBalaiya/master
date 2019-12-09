@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "98aeb0e1-7a43-4d89-9702-935c989b9bb1",
+		"name": "pingfederate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "OAuth Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic clientid:secret",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:pingidentity.com:oauth2:grant_type:validate_bearer",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://fss.stg.inbcu.com/fss/as/token.oauth2",
+					"protocol": "https",
+					"host": [
+						"fss",
+						"stg",
+						"inbcu",
+						"com"
+					],
+					"path": [
+						"fss",
+						"as",
+						"token.oauth2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth Code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Basic clientid:secret"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "{{auth_code}}",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{redirect_url}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://fss.stg.inbcu.com/fss/as/token.oauth2",
+					"protocol": "https",
+					"host": [
+						"fss",
+						"stg",
+						"inbcu",
+						"com"
+					],
+					"path": [
+						"fss",
+						"as",
+						"token.oauth2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
