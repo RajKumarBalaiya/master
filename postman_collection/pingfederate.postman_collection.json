@@ -38,7 +38,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://fss.stg.inbcu.com/fss/as/token.oauth2",
+					"raw": "{{url}}",
 					"protocol": "https",
 					"host": [
 						"fss",
@@ -98,7 +98,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://fss.stg.inbcu.com/fss/as/token.oauth2",
+					"raw": "{{url}}",
 					"protocol": "https",
 					"host": [
 						"fss",

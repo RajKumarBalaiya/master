@@ -1,0 +1,5 @@
+com\inbcu\primeauthor\AwsCognitoController.class
+com\inbcu\primeauthor\AwscognitoApplication.class
+com\inbcu\primeauthor\security\AuthendicationManager.class
+META-INF\spring-configuration-metadata.json
+com\inbcu\primeauthor\config\AppConfig.class

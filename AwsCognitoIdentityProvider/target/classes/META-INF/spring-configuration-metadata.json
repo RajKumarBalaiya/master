@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "oauth",
+      "type": "com.aws.cognito.config.AppConfig",
+      "sourceType": "com.aws.cognito.config.AppConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "oauth.cliend-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.aws.cognito.config.AppConfig"
+    },
+    {
+      "name": "oauth.token-url",
+      "type": "java.lang.String",
+      "sourceType": "com.aws.cognito.config.AppConfig"
+    }
+  ],
+  "hints": []
+}
