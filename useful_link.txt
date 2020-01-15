@@ -1,21 +1,76 @@
-https://stackoverflow.com/questions/41715038/authenticate-with-cognito-federated-identities
-https://stackoverflow.com/questions/40021849/javanot-authorized-to-perform-stsassumerolewithwebidentity-cognito-user-pool
 
+1.Amazon API Gateway Tutorial - Adding Security and Deploying:
+https://auth0.com/docs/integrations/aws-api-gateway/delegation/part-2
+
+2.How to secure Microservices on AWS with Cognito, API Gateway, and Lambda
+https://www.freecodecamp.org/news/how-to-secure-microservices-on-aws-with-cognito-api-gateway-and-lambda-4bfaa7a6583c/
+
+3.Understanding Amazon Cognito user pool OAuth 2.0 grants
 https://aws.amazon.com/blogs/mobile/understanding-amazon-cognito-user-pool-oauth-2-0-grants/
+https://github.com/csepulv/auth-api-demo/blob/master/docs/aws-setup.md#federated-identity-pool
 
+
+4.AWS.CognitoIdentity 
 https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentity.html#getId-property
-
-https://itnext.io/part-2-adding-authentication-to-your-angular-material-aws-amplify-powered-pwa-2a9d0fbd305a
-https://codeburst.io/the-difference-between-aws-cognito-userpools-and-federated-identities-9b47571795d4
-
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-identity.html#CognitoIdentity.Client.get_id
 
+
+5.The Difference Between AWS Cognito UserPools and Federated Identities?
+https://codeburst.io/the-difference-between-aws-cognito-userpools-and-federated-identities-9b47571795d4
+
+6.Amazon Cognito & Mobile Apps – Part1: User Identity and Simple AWS Authentication
 https://medium.com/aws-activate-startup-blog/amazon-cognito-mobile-apps-part1-user-identity-and-simple-aws-authentication-afe7c4486b35
 
+7.Building Serverless APIs with Spring Boot, AWS Lambda and API Gateway
 https://raymondhlee.wordpress.com/2018/06/11/building-serverless-apis-with-spring-boot-aws-lambda-and-api-gateway/
-https://stackoverflow.com/questions/46797211/aws4-signature-in-node-js
 
+8.serverless-api-gateway-aws-iam-angular-5-signing-request
+https://stackoverflow.com/questions/46797211/aws4-signature-in-node-js
 https://stackoverflow.com/questions/49545475/serverless-api-gateway-aws-iam-angular-5-signing-request
 https://medium.com/@joshua.a.kahn/calling-amazon-api-gateway-authenticated-methods-with-axios-and-aws4-6eeda1aa8696
 
+9.AWS_Tutorial
+http://jayendrapatil.com/aws-iam-roles-vs-resource-based-policies/
+
+10.understanding-cognito-identity-cognito-user-pools-and-different-integration-options-with-api-gateway
+https://noise.getoto.net/2017/06/08/understanding-cognito-identity-cognito-user-pools-and-different-integration-options-with-api-gateway/
+
+11.Resource Policy
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::**a/c id**:role/Cognito_myAppAuth_Role"
+      },
+      "Action": [
+        "lambda:InvokeFunction",
+        "execute-api:Invoke"
+      ],
+      "Resource": [
+        "arn:aws:execute-api:us-west-2:*:***stage_url****/*/POST/add",
+        "arn:aws:execute-api:us-west-2:*:***stage_url****/*/GET/getAll"
+      ]
+    }
+  ]
+} 
+12.Role Policy
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "mobileanalytics:PutEvents",
+                "cognito-sync:*",
+                "cognito-identity:*",
+                "execute-api:*"
+            ],
+            "Resource": [
+                "arn:aws:execute-api:us-west-2:*:***stage_url****/*/*/*"
+            ]
+        }
+    ]
+}
 
