@@ -1,0 +1,4 @@
+cognito:
+  identityProviderId: fss.stg.inbcu.com/fss
+  cognitoIdentityPoolId: us-west-2:8c55956c-5cee-4eba-8429-741c2e67e363
+  iamRoleArn: arn:aws:iam::797779561347:role/Cognito_PrimeSurveyToolAuth_Role

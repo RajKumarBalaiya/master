@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "9c705aef-8277-416b-bb94-05f130c4bdab",
+		"name": "springbootCognitoApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getIdentityId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2011d51a-b4db-4595-b943-03396aa8ecb0",
+						"exec": [
+							"var identityId =responseBody;",
+							"pm.environment.set(\"identityId\", identityId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/aws/identityId?openidToken={{openIdToken}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"aws",
+						"identityId"
+					],
+					"query": [
+						{
+							"key": "openidToken",
+							"value": "{{openIdToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getStsCredentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab7be93e-a063-4969-acf0-9b398cb3aacd",
+						"exec": [
+							"var response =JSON.parse(responseBody);",
+							"pm.environment.set(\"accessKeyId\", response.accessKeyId);",
+							"pm.environment.set(\"secretAccessKey\", response.secretKey);",
+							"pm.environment.set(\"sessionToken\", response.sessionToken);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/aws/stsCredential?openIdToken={{openIdToken}}&cognitoIdentityId={{identityId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"aws",
+						"stsCredential"
+					],
+					"query": [
+						{
+							"key": "openIdToken",
+							"value": "{{openIdToken}}"
+						},
+						{
+							"key": "cognitoIdentityId",
+							"value": "{{identityId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAssumeRoleCredentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a4c97d-02f0-4633-aa1c-02528cf9d57f",
+						"exec": [
+							"var response =JSON.parse(responseBody);",
+							"console.log(response);",
+							"console.log(response.accessKeyId);",
+							"pm.environment.set(\"accessKeyId\", response.accessKeyId);",
+							"pm.environment.set(\"secretAccessKey\", response.secretAccessKey);",
+							"pm.environment.set(\"sessionToken\", response.sessionToken);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/aws/assumeRoleCrdential?cognitoOpenIdToken={{cognitoToken}}&identityId={{identityId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"aws",
+						"assumeRoleCrdential"
+					],
+					"query": [
+						{
+							"key": "cognitoOpenIdToken",
+							"value": "{{cognitoToken}}"
+						},
+						{
+							"key": "identityId",
+							"value": "{{identityId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCognitoOpenIdToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf2ac8f0-e570-4711-9f12-035ec9785a5e",
+						"exec": [
+							"var cognitoToken =responseBody;",
+							"pm.environment.set(\"cognitoToken\", cognitoToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/aws/cogitoToken?identityId={{identityId}}&openIdToken={{openIdToken}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"aws",
+						"cogitoToken"
+					],
+					"query": [
+						{
+							"key": "identityId",
+							"value": "{{identityId}}"
+						},
+						{
+							"key": "openIdToken",
+							"value": "{{openIdToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": [
+						{
+							"key": "sessionToken",
+							"value": "{{sessionToken}}",
+							"type": "string"
+						},
+						{
+							"key": "secretKey",
+							"value": "{{secretAccessKey}}",
+							"type": "string"
+						},
+						{
+							"key": "accessKey",
+							"value": "{{accessKeyId}}",
+							"type": "string"
+						},
+						{
+							"key": "service",
+							"value": "execute-api",
+							"type": "string"
+						},
+						{
+							"key": "region",
+							"value": "us-west-2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iqwokdwiuf.execute-api.us-west-2.amazonaws.com/dev/greeting?name=raj",
+					"protocol": "https",
+					"host": [
+						"iqwokdwiuf",
+						"execute-api",
+						"us-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"greeting"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "raj"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetUser",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iqwokdwiuf.execute-api.us-west-2.amazonaws.com/dev/greeting?name=raj",
+							"protocol": "https",
+							"host": [
+								"iqwokdwiuf",
+								"execute-api",
+								"us-west-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"greeting"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "raj"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 11 Jan 2020 17:33:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "23"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "7ac7c1c8-0f2d-4b3f-a701-69bbba37a25c"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "UTF-8"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "GJYIRGXOPHcFmKQ="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-5e1a0701-03b55f20b4160a02c79e8452;Sampled=0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Hello raj\"\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

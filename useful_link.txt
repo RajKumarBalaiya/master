@@ -74,3 +74,5 @@ https://noise.getoto.net/2017/06/08/understanding-cognito-identity-cognito-user-
     ]
 }
 
+12.Angular modal
+https://stackoverflow.com/questions/21311736/how-do-i-increase-modal-width-in-angular-ui-bootstrap

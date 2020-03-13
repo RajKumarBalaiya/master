@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "cognito",
+      "type": "com.springboot.cognito.app.config.AppConfig",
+      "sourceType": "com.springboot.cognito.app.config.AppConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "cognito.cognito-identity-pool-id",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.cognito.app.config.AppConfig"
+    },
+    {
+      "name": "cognito.iam-role-arn",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.cognito.app.config.AppConfig"
+    },
+    {
+      "name": "cognito.identity-provider-id",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.cognito.app.config.AppConfig"
+    }
+  ],
+  "hints": []
+}

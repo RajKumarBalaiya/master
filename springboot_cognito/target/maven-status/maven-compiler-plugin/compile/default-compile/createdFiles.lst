@@ -1,0 +1,6 @@
+com\springboot\cognito\app\controller\CognitoAuthenticationController.class
+com\springboot\cognito\app\controller\AwsCredentials.class
+com\springboot\cognito\app\StreamLambdaHandler.class
+com\springboot\cognito\app\config\AppConfig.class
+com\springboot\cognito\app\SpringbootCognitoApplication.class
+META-INF\spring-configuration-metadata.json

@@ -1,0 +1,7 @@
+com\springboot\serverless\app\employee\manager\IEmployeeManger.class
+com\springboot\serverless\app\StreamLambdaHandler.class
+META-INF\spring.components
+com\springboot\serverless\app\manager\impl\EmployeeRepository.class
+com\springboot\serverless\app\controller\EmployeeController.class
+com\springboot\serverless\app\SpringBootServerlessApp.class
+com\springboot\serverless\app\Model\EmployeeModel.class
